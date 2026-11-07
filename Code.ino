@@ -2,12 +2,12 @@
 #include <HTTPClient.h>
 #include <Wire.h>
 
-// ---------------- WIFI CONFIG ----------------
+//WIFI CONFIG
 const char* ssid = "Spidey";
 const char* password = "vichu0609";
 const char* sheetURL = "https://script.google.com/macros/s/AKfycbw6tnlKWAMRDcMZbWEprkILdAMctBdAhmrpHWy6S6aLppKYCrhiZylC0UENz3VcWGUh/exec";
 
-// ---------------- TELEGRAM ----------------
+//TELEGRAM
 String botToken = "8275160557:AAHIPzNGsu-MZlzORqpBTjhTmUTjzvunlRY";
 String chatId   = "1539376959";
 
@@ -21,7 +21,7 @@ void sendTelegram(String message) {
   }
 }
 
-// ---------------- VIBRATION ----------------
+//VIBRATION
 #define VIB_PIN 25
 volatile unsigned long vibrationCount = 0;
 volatile unsigned long lastInterruptTime = 0;
@@ -34,7 +34,7 @@ void IRAM_ATTR handleVibration() {
   }
 }
 
-// ---------------- MPU6050 ----------------
+//MPU6050
 const uint8_t MPU_ADDR = 0x68;
 const float ACCEL_SCALE = 16384.0;
 const float GYRO_SCALE  = 131.0;
@@ -75,7 +75,7 @@ void calibrateMPU() {
   gyroBiasZ=sumGz/(float)samples;
 }
 
-// ---------------- SOIL ----------------
+//SOIL
 const int SOIL_A_PIN = 34;
 const int DRY_CAL = 3500;
 const int WET_CAL = 1200;
@@ -93,7 +93,7 @@ String moistureLabel(float pct){
   else return "DRY";
 }
 
-// ---------------- SETUP ----------------
+//SETUP
 void setup(){
   Serial.begin(115200);
 
@@ -113,7 +113,7 @@ void setup(){
   Serial.println("System Ready");
 }
 
-// ---------------- LOOP ----------------
+//LOOP
 void loop(){
 
   int16_t rawAx,rawAy,rawAz,rawGx,rawGy,rawGz;
@@ -134,7 +134,7 @@ void loop(){
   bool vibAbnormal = (vibrationCount >= 2);
   int abnormalCount = (soilAbnormal?1:0) + (tiltAbnormal?1:0) + (vibAbnormal?1:0);
 
-  // =============== SERIAL PRINT =====================
+  //SERIAL PRINT
   Serial.println("-------------------------------------------------");
   Serial.print("Accel(g): ");
   Serial.print(ax,2); Serial.print(", ");
@@ -165,7 +165,7 @@ void loop(){
     sendTelegram("⚠ LANDSLIDE ALERT!");
   }
 
-  // ---- Google Sheet Upload ----
+  //Google Sheet Upload
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
     String url = String(sheetURL) +
