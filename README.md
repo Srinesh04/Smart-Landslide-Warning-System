@@ -158,10 +158,6 @@ At 01:27:29, the recorded sensor values showed a significant change:
 - All three abnormal conditions were detected, satisfying the system's 2-out-of-3 risk decision rule.
 - The system classified this condition as LANDSLIDE RISK and initiated a Telegram warning notification.
 
-![Telegram alert](Images/Telegramalert.png)
-
-*Figure 5. Telegram alert when two abnormal parameters are triggered.*
-
 #### 3. Risk Detection with Two Abnormal Conditions
 
 Another example occurred at 01:27:05:
@@ -173,10 +169,14 @@ Another example occurred at 01:27:05:
 
 This demonstrates that the system does not depend on all three sensors detecting abnormal conditions simultaneously. Two abnormal parameters are sufficient to trigger a warning.
 
+![Telegram alert](Images/Telegramalert.png)
+
+*Figure 5. Telegram alert when two abnormal parameters are triggered.*
+
 ![Arduino console](Images/arduino_console.png)
 
 *Figure 6. Arduino Console displaying the sensor values.*
 
-![Google Sheets logging](Images/sample)
+![Google Sheets logging](Images/Googlesheet.png)
 
 *Figure 7. Google Sheet logging detailed data for future analysis.*
