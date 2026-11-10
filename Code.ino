@@ -4,7 +4,7 @@
 
 //WIFI CONFIG
 const char* ssid = "Spidey";
-const char* password = "vichu0609";
+const char* password = "vic******";
 const char* sheetURL = "https://script.google.com/macros/s/AKfycbw6tnlKWAMRDcMZbWEprkILdAMctBdAhmrpHWy6S6aLppKYCrhiZylC0UENz3VcWGUh/exec";
 
 //TELEGRAM
